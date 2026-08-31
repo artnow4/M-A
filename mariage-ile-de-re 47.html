@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#ffffff">
+<meta name="supported-color-schemes" content="light">
+<title>Maria &amp; Arnaud — Île de Ré</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&amp;family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light only;
+  --paper:#ffffff;--paper2:#F6EEE7;--blush:#F4D9CC;--coral:#E38A72;--rose:#C98BA6;
+  --peri:#7F9EC4;--sea:#4E6E93;--ink:#33405A;--ink-soft:#5b6580;--line:#ECE0D8;
+}
+*{box-sizing:border-box}
+svg{max-width:100%}
+html{scroll-behavior:smooth;background:#ffffff !important;background-color:#ffffff !important;
+  color-scheme:light only;-webkit-text-size-adjust:100%}
+body{margin:0;background:#ffffff !important;background-color:#ffffff !important;color:var(--ink);
+  font-family:'Mulish',system-ui,sans-serif;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@media (prefers-color-scheme:dark){
+  html,body{background:#ffffff !important;background-color:#ffffff !important;color:var(--ink) !important}
+  section,.wrap,.blk,.must,.fact,.tl-day,.tl-list,.row,.strip{background:transparent !important}
+}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.05;margin:0}
+b{font-weight:700;color:var(--sea)}
+sup{font-size:.6em}
+a{color:var(--sea)}
+.amp{font-family:'Mulish',system-ui,sans-serif;font-style:italic;font-weight:300;font-size:.8em;vertical-align:.04em}
+.scene{display:block;width:100%;height:100%}
+
+.lang{position:fixed;top:16px;right:16px;z-index:40;display:flex;gap:2px;
+  background:rgba(255,255,255,.94);border:1px solid rgba(78,110,147,.2);border-radius:999px;padding:4px}
+.lang label{font-family:'Mulish';font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--ink-soft);padding:6px 12px;border-radius:999px;cursor:pointer;user-select:none}
+.langradio{position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none}
+#langfr:checked ~ .lang label[for="langfr"],#langes:checked ~ .lang label[for="langes"]{background:var(--coral);color:#fff}
+#langfr:focus-visible ~ .lang label[for="langfr"],#langes:focus-visible ~ .lang label[for="langes"]{outline:2px solid var(--sea);outline-offset:2px}
+/* bilingual text: both languages are in the HTML, CSS shows one */
+.i18-es{display:none}
+#langes:checked ~ * .i18-es{display:inline}
+#langes:checked ~ * .i18-fr{display:none}
+
+.wrap{max-width:680px;margin:0 auto;padding-left:26px;padding-right:26px}
+section{padding:60px 0}
+.eyebrow{font-family:'Mulish';font-weight:700;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--coral);margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:30px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--coral),var(--rose))}
+
+/* HERO */
+.hero{position:relative;height:100vh;height:100svh;min-height:520px;max-height:900px;overflow:hidden;display:flex;align-items:flex-end}
+.hero .scene{position:absolute;inset:0;object-fit:cover}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,0) 30%,rgba(51,64,90,.06) 62%,rgba(51,64,90,.42) 100%);z-index:1}
+.hero-in{position:relative;z-index:2;max-width:680px;margin:0 auto;width:100%;padding:0 26px 7vh}
+.hero .where{font-family:'Mulish';font-weight:700;letter-spacing:.32em;text-transform:uppercase;font-size:12px;color:#fff;text-shadow:0 1px 10px rgba(51,64,90,.5);margin-bottom:14px}
+.hero h1{font-size:clamp(58px,17vw,128px);font-weight:300;font-style:italic;color:#fff;text-shadow:0 4px 34px rgba(51,64,90,.4);letter-spacing:-.01em}
+.hero .tagline{max-width:440px;margin-top:16px;color:#fff;text-shadow:0 1px 10px rgba(51,64,90,.5);font-size:15px}
+
+/* WELCOME */
+.welcome p{font-family:'Mulish',system-ui,sans-serif;font-weight:400;font-size:16.5px;line-height:1.72;color:var(--ink);margin:0}
+
+/* scene strip */
+.strip{height:150px;overflow:hidden;position:relative}
+.strip .scene{position:absolute;bottom:0;left:0;width:100%;height:340px;object-fit:cover}
+
+/* PROGRAMME — tide timeline */
+.tl-day{margin-bottom:30px}
+.tl-day-head{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin:0 0 8px 0}
+.tl-day-head h3{font-family:'Fraunces';font-style:italic;font-weight:300;font-size:clamp(25px,6.2vw,36px);color:var(--ink)}
+.tl-day-head .k{font-family:'Fraunces';font-weight:400;font-size:clamp(24px,6vw,34px);line-height:1.08;color:var(--coral)}
+.tl-list{position:relative}
+.tl-list::before{content:"";position:absolute;left:97px;top:14px;bottom:10px;width:2px;background:linear-gradient(180deg,var(--coral),var(--peri));border-radius:2px;opacity:.55}
+.row{position:relative;display:grid;grid-template-columns:86px 24px 1fr;align-items:start;padding:12px 0}
+.row .tm{font-family:'Fraunces';font-style:italic;font-size:14px;color:var(--sea);text-align:right;padding-right:8px;padding-top:2px;line-height:1.25;overflow-wrap:normal;word-break:keep-all;hyphens:none;white-space:normal}
+.row .mk{display:flex;justify-content:center;padding-top:6px}
+.row .dot{width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--peri);z-index:1}
+.row .dot.together{border-color:var(--coral);background:var(--coral)}
+.row .cc{padding-left:16px;min-width:0}
+.row .cc p{margin:0;font-size:15.5px}
+.tag{display:inline-block;font-family:'Mulish';font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:2px 9px;border-radius:999px;margin-bottom:6px}
+.tag.together{background:var(--coral);color:#fff}
+.tag.together.dashed{background:transparent;color:var(--coral);border:1px dashed var(--coral)}
+.tag.reco{background:transparent;color:var(--sea);border:1px solid var(--sea)}
+.enc{display:flex;align-items:flex-start;gap:7px;margin-top:9px;font-family:'Mulish';font-weight:600;font-size:12.5px;border-radius:9px;padding:6px 10px;width:fit-content;max-width:100%;line-height:1.4}
+.enc .ic{flex:none;width:17px;height:17px;margin-top:1px}
+.enc.bike,.enc.walk{color:var(--sea);background:rgba(127,158,196,.13)}
+.enc.dress{color:#a85f7e;background:rgba(201,139,166,.16)}
+
+/* MUSTS */
+.must{padding:20px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:18px 1fr;gap:14px;align-items:start}
+.must:first-of-type{border-top:0}
+.must .sw{width:13px;height:13px;border-radius:50%;margin-top:8px;background:radial-gradient(circle at 30% 30%,var(--rose),var(--coral))}
+.must h3{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:22px;margin-bottom:4px;color:var(--sea)}
+.must p{margin:0;font-size:15px}
+
+/* FACTS */
+.fact{border-top:1px solid var(--line)}
+.fact:last-child{border-bottom:1px solid var(--line)}
+.fact summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;padding:20px 2px;font-family:'Fraunces';font-style:italic;font-size:22px;color:var(--ink)}
+.fact summary::-webkit-details-marker{display:none}
+.fact summary:focus-visible{outline:2px solid var(--sea);outline-offset:-2px}
+.fact .plus{font-family:'Mulish';font-size:26px;color:var(--coral);transition:transform .3s;flex:none}
+.fact[open] .plus{transform:rotate(45deg)}
+.fact .body p{margin:0;padding:0 2px 22px;font-size:15px;color:var(--ink-soft)}
+
+/* INFO / RDV / HOTELS */
+.blk{padding:22px 0;border-top:1px solid var(--line)}
+.blk:first-of-type{border-top:0}
+.blk h3{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:24px;color:var(--sea);margin-bottom:8px}
+.blk p{margin:0 0 8px;font-size:15.5px}
+.maplink{display:inline-flex;align-items:center;gap:6px;font-family:'Mulish';font-weight:700;font-size:13px;text-decoration:none;color:var(--sea);border-bottom:1px solid rgba(78,110,147,.35);padding-bottom:1px;margin:2px 0}
+.tip{margin-top:12px;padding:14px 16px;background:var(--paper2);border-left:3px solid var(--coral);border-radius:0 12px 12px 0;font-size:14px}
+.rdv{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline;padding:15px 0;border-top:1px solid var(--line);text-decoration:none;color:inherit}
+.rdv:first-of-type{border-top:0}
+.rdv h4{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:20px;margin:0;color:var(--ink)}
+.rdv .meta{font-size:13.5px;color:var(--ink-soft)}
+.rdv .go{font-family:'Mulish';font-weight:700;font-size:12px;color:var(--coral);white-space:nowrap}
+.hgroup{font-family:'Mulish';font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--coral);margin:24px 0 0}
+
+/* FOOTER */
+footer{position:relative;height:70vh;height:70svh;min-height:400px;max-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+footer .scene{position:absolute;inset:0;object-fit:cover}
+footer .fscrim{position:absolute;inset:0;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.5) 22%,rgba(51,64,90,.28) 100%);z-index:1}
+footer .fin{position:relative;z-index:2}
+footer .fnames{font-family:'Fraunces';font-style:italic;font-weight:300;font-size:clamp(44px,13vw,86px);color:#fff;text-shadow:0 3px 24px rgba(51,64,90,.4)}
+footer .fmsg{color:#fff;text-shadow:0 1px 10px rgba(51,64,90,.5);margin-top:10px;font-size:15px}
+
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
+.js .reveal.in{opacity:1;transform:none}
+@media(max-width:560px){
+  .row{grid-template-columns:76px 22px 1fr}
+  .tl-list::before{left:86px}
+  .row .tm{font-size:13px}
+  .row .cc{padding-left:12px}
+}
+@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<input type="radio" name="lang" id="langfr" class="langradio" checked="">
+<input type="radio" name="lang" id="langes" class="langradio">
+<div class="lang" role="group" aria-label="Langue / Idioma">
+  <label for="langfr">FR</label>
+  <label for="langes">ES</label>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <svg class="scene" viewBox="0 0 800 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="wcSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7E7DD"></stop>
+      <stop offset="34%" stop-color="#F5D9CC"></stop>
+      <stop offset="60%" stop-color="#E9C2C4"></stop>
+      <stop offset="100%" stop-color="#B9A8CC"></stop>
+    </linearGradient>
+    <radialGradient id="wcSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FBEFD6"></stop>
+      <stop offset="55%" stop-color="#F6CDA8"></stop>
+      <stop offset="100%" stop-color="#F6CDA8" stop-opacity="0"></stop>
+    </radialGradient>
+    <linearGradient id="wcWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9C4CE"></stop>
+      <stop offset="100%" stop-color="#9FB0C9"></stop>
+    </linearGradient>
+    <filter id="wcPaint" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="2" seed="7" result="n"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+    </filter>
+    <filter id="wcSoft"><feGaussianBlur stdDeviation="1.1"></feGaussianBlur></filter>
+    <filter id="wcGrain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"></feTurbulence>
+      <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+  </defs>
+
+  <rect width="800" height="520" fill="url(#wcSky)"></rect>
+  <ellipse cx="392" cy="168" rx="150" ry="140" fill="url(#wcSun)" opacity=".9"></ellipse>
+
+  <!-- distant land band (soft) -->
+  <g filter="url(#wcPaint)">
+    <path d="M0 262 Q150 244 300 258 T560 254 T800 260 L800 300 L0 300Z" fill="#8FA8B4" opacity=".5"></path>
+    <path d="M0 270 Q180 258 360 268 T720 266 T800 270 L800 300 L0 300Z" fill="#7C93A8" opacity=".48"></path>
+  </g>
+
+  <!-- Ile de Re bridge, discreet on the right -->
+  <g filter="url(#wcSoft)" opacity=".4" stroke="#6E7E92" fill="none">
+    <path d="M582 256 Q700 234 812 250" stroke-width="2.4"></path>
+    <g stroke-width="1.4">
+      <line x1="612" y1="250" x2="612" y2="262"></line>
+      <line x1="648" y1="246" x2="648" y2="260"></line>
+      <line x1="686" y1="242" x2="686" y2="258"></line>
+      <line x1="726" y1="240" x2="726" y2="256"></line>
+      <line x1="768" y1="242" x2="768" y2="256"></line>
+    </g>
+  </g>
+
+  <!-- village + Ars clocher: single (highest) black cap -->
+  <g filter="url(#wcSoft)">
+    <rect x="356" y="252" width="16" height="13" fill="#F3E9DE"></rect>
+    <rect x="374" y="250" width="20" height="15" fill="#EFE0D2"></rect>
+    <path d="M356 252 l8 -7 l8 7Z" fill="#C98B72"></path>
+    <path d="M374 250 l10 -8 l10 8Z" fill="#C98B72"></path>
+    <rect x="411" y="196" width="17" height="70" fill="#F4EDE3"></rect>
+    <path d="M411 196 L419.5 150 L428 196Z" fill="#2E3A54"></path>
+    <rect x="416" y="230" width="7" height="9" fill="#2E3A54" opacity=".55"></rect>
+  </g>
+
+  <!-- distant sailboats on the sea -->
+  <g filter="url(#wcSoft)">
+    <g fill="#F4EDE3" stroke="#2E3A54" stroke-width="1">
+      <path d="M150 244 l0 -16 l9 16 z"></path><path d="M144 244 q6 5 15 0 q-4 4 -7.5 4 q-3.5 0 -7.5 -4z" fill="#2E3A54" stroke="none"></path>
+      <path d="M214 250 l0 -12 l7 12 z"></path><path d="M209 250 q5 4 12 0 q-3 3 -6 3 q-3 0 -6 -3z" fill="#2E3A54" stroke="none"></path>
+      <path d="M92 252 l0 -10 l6 10 z"></path><path d="M88 252 q4 3 10 0 q-2.5 2.5 -5 2.5 q-2.5 0 -5 -2.5z" fill="#2E3A54" stroke="none"></path>
+    </g>
+  </g>
+
+  <!-- water / marais salants -->
+  <g filter="url(#wcPaint)">
+    <rect x="0" y="298" width="800" height="150" fill="url(#wcWater)" opacity=".9"></rect>
+    <rect x="412" y="298" width="13" height="66" fill="#8F7F98" opacity=".3"></rect>
+    <g stroke="#EAD9C4" stroke-width="5" opacity=".7">
+      <line x1="0" y1="330" x2="800" y2="330"></line>
+      <line x1="0" y1="372" x2="800" y2="372"></line>
+      <line x1="0" y1="414" x2="800" y2="414"></line>
+      <line x1="130" y1="300" x2="130" y2="446"></line>
+      <line x1="300" y1="300" x2="300" y2="446"></line>
+      <line x1="470" y1="300" x2="470" y2="446"></line>
+      <line x1="640" y1="300" x2="640" y2="446"></line>
+    </g>
+    <rect x="132" y="332" width="166" height="38" fill="#E7C7C9" opacity=".4"></rect>
+    <rect x="472" y="374" width="166" height="38" fill="#C9B6D0" opacity=".4"></rect>
+    <rect x="302" y="416" width="166" height="28" fill="#E7C7C9" opacity=".35"></rect>
+  </g>
+
+  <!-- salt mounds -->
+  <g filter="url(#wcSoft)" fill="#FBF4EC" opacity=".92">
+    <path d="M150 330 q13 -20 26 0Z"></path>
+    <path d="M320 372 q12 -18 24 0Z"></path>
+    <path d="M612 330 q13 -20 26 0Z"></path>
+  </g>
+
+  <!-- paludiers with their las (long-handled rake) -->
+  <g filter="url(#wcSoft)">
+    <!-- worker 1, on the 330 levee, drawing salt toward him -->
+    <g opacity=".97">
+      <!-- las: wooden shaft + flat blade lying in the pan -->
+      <line x1="210" y1="323" x2="190" y2="350" stroke="#9A7550" stroke-width="1.9" stroke-linecap="round"></line>
+      <path d="M182 351 L197 350" stroke="#6F5540" stroke-width="3" stroke-linecap="round"></path>
+      <!-- legs + boots -->
+      <path d="M215.4 333 L212.5 344" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M216.6 333 L220 344" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M212.5 344.6 L209.8 346 M220 344.6 L222.8 346" stroke="#252E44" stroke-width="2.6" stroke-linecap="round"></path>
+      <!-- torso, light linen shirt, slight forward lean -->
+      <path d="M217 321.5 L215.6 333.5" stroke="#F2E8DC" stroke-width="5" stroke-linecap="round"></path>
+      <!-- both arms reaching to the shaft -->
+      <path d="M216.4 324 Q212 322.6 210.2 323.2" stroke="#F2E8DC" stroke-width="2.1" stroke-linecap="round" fill="none"></path>
+      <path d="M215.8 328 Q211 327.4 208.4 325.6" stroke="#EADFD0" stroke-width="1.9" stroke-linecap="round" fill="none"></path>
+      <!-- neck, head, wide straw hat -->
+      <path d="M217 320 L217.2 318.4" stroke="#C99C79" stroke-width="1.8" stroke-linecap="round"></path>
+      <circle cx="217.2" cy="317.4" r="2.3" fill="#C99C79"></circle>
+      <path d="M211.4 316.2 Q217.2 314.6 223 316.2" stroke="#DCB57F" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+      <path d="M214.2 316.2 q3 -3.6 6 0Z" fill="#DCB57F"></path>
+      <!-- reflection in the brine -->
+      <path d="M216 346 L215 352" stroke="#6E7E92" stroke-width="2.6" stroke-linecap="round" opacity=".22"></path>
+    </g>
+    <!-- worker 2, on the 372 levee, seen from behind -->
+    <g opacity=".93">
+      <line x1="527" y1="365" x2="547" y2="390" stroke="#9A7550" stroke-width="1.9" stroke-linecap="round"></line>
+      <path d="M540 391 L555 390" stroke="#6F5540" stroke-width="3" stroke-linecap="round"></path>
+      <path d="M519.6 375 L516.6 386" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M520.8 375 L524.2 386" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M516.6 386.6 L513.9 388 M524.2 386.6 L527 388" stroke="#252E44" stroke-width="2.6" stroke-linecap="round"></path>
+      <path d="M519.4 363.5 L520 375.5" stroke="#E6D8E2" stroke-width="5" stroke-linecap="round"></path>
+      <path d="M520 366 Q524.4 364.6 526.4 365.2" stroke="#E6D8E2" stroke-width="2.1" stroke-linecap="round" fill="none"></path>
+      <path d="M520.4 370 Q525.4 369.4 528 367.6" stroke="#DCCDD8" stroke-width="1.9" stroke-linecap="round" fill="none"></path>
+      <path d="M519.4 362 L519.2 360.4" stroke="#C99C79" stroke-width="1.8" stroke-linecap="round"></path>
+      <circle cx="519.2" cy="359.4" r="2.3" fill="#C99C79"></circle>
+      <path d="M513.4 358.2 Q519.2 356.6 525 358.2" stroke="#DCB57F" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+      <path d="M516.2 358.2 q3 -3.6 6 0Z" fill="#DCB57F"></path>
+      <path d="M520 388 L521 394" stroke="#6E7E92" stroke-width="2.6" stroke-linecap="round" opacity=".2"></path>
+    </g>
+  </g>
+
+  <!-- foreground marsh grass + poppies -->
+  <g filter="url(#wcPaint)">
+    <path d="M0 446 Q200 430 400 448 T800 446 L800 520 L0 520Z" fill="#8CA07E" opacity=".85"></path>
+    <path d="M0 474 Q220 462 440 476 T800 474 L800 520 L0 520Z" fill="#6E8666" opacity=".8"></path>
+  </g>
+  <g filter="url(#wcSoft)" fill="#E38A72" opacity=".9">
+    <circle cx="96" cy="470" r="7"></circle><circle cx="128" cy="488" r="6"></circle>
+    <circle cx="690" cy="474" r="7"></circle><circle cx="662" cy="492" r="5"></circle>
+  </g>
+
+  <rect width="800" height="520" filter="url(#wcGrain)" opacity=".05"></rect>
+</svg>
+  <div class="scrim"></div>
+  <div class="hero-in">
+    <div class="where"><span data-i18n="where"><span class="i18-fr">Île de Ré</span><span class="i18-es" lang="es">Isla de Ré</span></span> · <span data-i18n="dates"><span class="i18-fr">4 au 6 septembre 2026</span><span class="i18-es" lang="es">del 4 al 6 de septiembre de 2026</span></span></div>
+    <h1 data-i18n="names"><span class="i18-fr">Maria <span class="amp">&amp;</span> Arnaud</span><span class="i18-es" lang="es">Maria <span class="amp">&amp;</span> Arnaud</span></h1>
+    <p class="tagline" data-i18n="tagline"><span class="i18-fr">Le mariage le moins mariage que vous ayez connu.</span><span class="i18-es" lang="es">La boda menos boda que hayáis conocido.</span></p>
+  </div>
+</header>
+
+<!-- WELCOME -->
+<section class="welcome wrap reveal">
+  <p class="eyebrow" data-i18n="welcome_label"><span class="i18-fr">Bienvenue</span><span class="i18-es" lang="es">Bienvenidos</span></p>
+  <p data-i18n="welcome_body"><span class="i18-fr">On a hâte de tous vous réunir sur l’île de Ré pour célébrer notre union et passer un bon moment en famille. Trois jours ensemble pour faire connaissance et fêter les récents et futurs heureux événements.</span><span class="i18-es" lang="es">Tenemos muchas ganas de reuniros a todos en la isla de Ré para celebrar nuestra unión y pasar un buen rato en familia. Tres días juntos para conocernos y celebrar los recientes y futuros felices acontecimientos.</span></p>
+</section>
+
+<div class="strip reveal"><svg class="scene" viewBox="0 0 800 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="wcSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7E7DD"></stop>
+      <stop offset="34%" stop-color="#F5D9CC"></stop>
+      <stop offset="60%" stop-color="#E9C2C4"></stop>
+      <stop offset="100%" stop-color="#B9A8CC"></stop>
+    </linearGradient>
+    <radialGradient id="wcSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FBEFD6"></stop>
+      <stop offset="55%" stop-color="#F6CDA8"></stop>
+      <stop offset="100%" stop-color="#F6CDA8" stop-opacity="0"></stop>
+    </radialGradient>
+    <linearGradient id="wcWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9C4CE"></stop>
+      <stop offset="100%" stop-color="#9FB0C9"></stop>
+    </linearGradient>
+    <filter id="wcPaint" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="2" seed="7" result="n"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+    </filter>
+    <filter id="wcSoft"><feGaussianBlur stdDeviation="1.1"></feGaussianBlur></filter>
+    <filter id="wcGrain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"></feTurbulence>
+      <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+  </defs>
+
+  <rect width="800" height="520" fill="url(#wcSky)"></rect>
+  <ellipse cx="392" cy="168" rx="150" ry="140" fill="url(#wcSun)" opacity=".9"></ellipse>
+
+  <!-- distant land band (soft) -->
+  <g filter="url(#wcPaint)">
+    <path d="M0 262 Q150 244 300 258 T560 254 T800 260 L800 300 L0 300Z" fill="#8FA8B4" opacity=".5"></path>
+    <path d="M0 270 Q180 258 360 268 T720 266 T800 270 L800 300 L0 300Z" fill="#7C93A8" opacity=".48"></path>
+  </g>
+
+  <!-- Ile de Re bridge, discreet on the right -->
+  <g filter="url(#wcSoft)" opacity=".4" stroke="#6E7E92" fill="none">
+    <path d="M582 256 Q700 234 812 250" stroke-width="2.4"></path>
+    <g stroke-width="1.4">
+      <line x1="612" y1="250" x2="612" y2="262"></line>
+      <line x1="648" y1="246" x2="648" y2="260"></line>
+      <line x1="686" y1="242" x2="686" y2="258"></line>
+      <line x1="726" y1="240" x2="726" y2="256"></line>
+      <line x1="768" y1="242" x2="768" y2="256"></line>
+    </g>
+  </g>
+
+  <!-- village + Ars clocher: single (highest) black cap -->
+  <g filter="url(#wcSoft)">
+    <rect x="356" y="252" width="16" height="13" fill="#F3E9DE"></rect>
+    <rect x="374" y="250" width="20" height="15" fill="#EFE0D2"></rect>
+    <path d="M356 252 l8 -7 l8 7Z" fill="#C98B72"></path>
+    <path d="M374 250 l10 -8 l10 8Z" fill="#C98B72"></path>
+    <rect x="411" y="196" width="17" height="70" fill="#F4EDE3"></rect>
+    <path d="M411 196 L419.5 150 L428 196Z" fill="#2E3A54"></path>
+    <rect x="416" y="230" width="7" height="9" fill="#2E3A54" opacity=".55"></rect>
+  </g>
+
+  <!-- distant sailboats on the sea -->
+  <g filter="url(#wcSoft)">
+    <g fill="#F4EDE3" stroke="#2E3A54" stroke-width="1">
+      <path d="M150 244 l0 -16 l9 16 z"></path><path d="M144 244 q6 5 15 0 q-4 4 -7.5 4 q-3.5 0 -7.5 -4z" fill="#2E3A54" stroke="none"></path>
+      <path d="M214 250 l0 -12 l7 12 z"></path><path d="M209 250 q5 4 12 0 q-3 3 -6 3 q-3 0 -6 -3z" fill="#2E3A54" stroke="none"></path>
+      <path d="M92 252 l0 -10 l6 10 z"></path><path d="M88 252 q4 3 10 0 q-2.5 2.5 -5 2.5 q-2.5 0 -5 -2.5z" fill="#2E3A54" stroke="none"></path>
+    </g>
+  </g>
+
+  <!-- water / marais salants -->
+  <g filter="url(#wcPaint)">
+    <rect x="0" y="298" width="800" height="150" fill="url(#wcWater)" opacity=".9"></rect>
+    <rect x="412" y="298" width="13" height="66" fill="#8F7F98" opacity=".3"></rect>
+    <g stroke="#EAD9C4" stroke-width="5" opacity=".7">
+      <line x1="0" y1="330" x2="800" y2="330"></line>
+      <line x1="0" y1="372" x2="800" y2="372"></line>
+      <line x1="0" y1="414" x2="800" y2="414"></line>
+      <line x1="130" y1="300" x2="130" y2="446"></line>
+      <line x1="300" y1="300" x2="300" y2="446"></line>
+      <line x1="470" y1="300" x2="470" y2="446"></line>
+      <line x1="640" y1="300" x2="640" y2="446"></line>
+    </g>
+    <rect x="132" y="332" width="166" height="38" fill="#E7C7C9" opacity=".4"></rect>
+    <rect x="472" y="374" width="166" height="38" fill="#C9B6D0" opacity=".4"></rect>
+    <rect x="302" y="416" width="166" height="28" fill="#E7C7C9" opacity=".35"></rect>
+  </g>
+
+  <!-- salt mounds -->
+  <g filter="url(#wcSoft)" fill="#FBF4EC" opacity=".92">
+    <path d="M150 330 q13 -20 26 0Z"></path>
+    <path d="M320 372 q12 -18 24 0Z"></path>
+    <path d="M612 330 q13 -20 26 0Z"></path>
+  </g>
+
+  <!-- paludiers with their las (long-handled rake) -->
+  <g filter="url(#wcSoft)">
+    <!-- worker 1, on the 330 levee, drawing salt toward him -->
+    <g opacity=".97">
+      <!-- las: wooden shaft + flat blade lying in the pan -->
+      <line x1="210" y1="323" x2="190" y2="350" stroke="#9A7550" stroke-width="1.9" stroke-linecap="round"></line>
+      <path d="M182 351 L197 350" stroke="#6F5540" stroke-width="3" stroke-linecap="round"></path>
+      <!-- legs + boots -->
+      <path d="M215.4 333 L212.5 344" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M216.6 333 L220 344" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M212.5 344.6 L209.8 346 M220 344.6 L222.8 346" stroke="#252E44" stroke-width="2.6" stroke-linecap="round"></path>
+      <!-- torso, light linen shirt, slight forward lean -->
+      <path d="M217 321.5 L215.6 333.5" stroke="#F2E8DC" stroke-width="5" stroke-linecap="round"></path>
+      <!-- both arms reaching to the shaft -->
+      <path d="M216.4 324 Q212 322.6 210.2 323.2" stroke="#F2E8DC" stroke-width="2.1" stroke-linecap="round" fill="none"></path>
+      <path d="M215.8 328 Q211 327.4 208.4 325.6" stroke="#EADFD0" stroke-width="1.9" stroke-linecap="round" fill="none"></path>
+      <!-- neck, head, wide straw hat -->
+      <path d="M217 320 L217.2 318.4" stroke="#C99C79" stroke-width="1.8" stroke-linecap="round"></path>
+      <circle cx="217.2" cy="317.4" r="2.3" fill="#C99C79"></circle>
+      <path d="M211.4 316.2 Q217.2 314.6 223 316.2" stroke="#DCB57F" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+      <path d="M214.2 316.2 q3 -3.6 6 0Z" fill="#DCB57F"></path>
+      <!-- reflection in the brine -->
+      <path d="M216 346 L215 352" stroke="#6E7E92" stroke-width="2.6" stroke-linecap="round" opacity=".22"></path>
+    </g>
+    <!-- worker 2, on the 372 levee, seen from behind -->
+    <g opacity=".93">
+      <line x1="527" y1="365" x2="547" y2="390" stroke="#9A7550" stroke-width="1.9" stroke-linecap="round"></line>
+      <path d="M540 391 L555 390" stroke="#6F5540" stroke-width="3" stroke-linecap="round"></path>
+      <path d="M519.6 375 L516.6 386" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M520.8 375 L524.2 386" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M516.6 386.6 L513.9 388 M524.2 386.6 L527 388" stroke="#252E44" stroke-width="2.6" stroke-linecap="round"></path>
+      <path d="M519.4 363.5 L520 375.5" stroke="#E6D8E2" stroke-width="5" stroke-linecap="round"></path>
+      <path d="M520 366 Q524.4 364.6 526.4 365.2" stroke="#E6D8E2" stroke-width="2.1" stroke-linecap="round" fill="none"></path>
+      <path d="M520.4 370 Q525.4 369.4 528 367.6" stroke="#DCCDD8" stroke-width="1.9" stroke-linecap="round" fill="none"></path>
+      <path d="M519.4 362 L519.2 360.4" stroke="#C99C79" stroke-width="1.8" stroke-linecap="round"></path>
+      <circle cx="519.2" cy="359.4" r="2.3" fill="#C99C79"></circle>
+      <path d="M513.4 358.2 Q519.2 356.6 525 358.2" stroke="#DCB57F" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+      <path d="M516.2 358.2 q3 -3.6 6 0Z" fill="#DCB57F"></path>
+      <path d="M520 388 L521 394" stroke="#6E7E92" stroke-width="2.6" stroke-linecap="round" opacity=".2"></path>
+    </g>
+  </g>
+
+  <!-- foreground marsh grass + poppies -->
+  <g filter="url(#wcPaint)">
+    <path d="M0 446 Q200 430 400 448 T800 446 L800 520 L0 520Z" fill="#8CA07E" opacity=".85"></path>
+    <path d="M0 474 Q220 462 440 476 T800 474 L800 520 L0 520Z" fill="#6E8666" opacity=".8"></path>
+  </g>
+  <g filter="url(#wcSoft)" fill="#E38A72" opacity=".9">
+    <circle cx="96" cy="470" r="7"></circle><circle cx="128" cy="488" r="6"></circle>
+    <circle cx="690" cy="474" r="7"></circle><circle cx="662" cy="492" r="5"></circle>
+  </g>
+
+  <rect width="800" height="520" filter="url(#wcGrain)" opacity=".05"></rect>
+</svg></div>
+
+<!-- PROGRAMME -->
+<section class="wrap">
+  <p class="eyebrow reveal" data-i18n="prog_label"><span class="i18-fr">Le programme</span><span class="i18-es" lang="es">El programa</span></p>
+  <div class="tl">
+
+    <div class="tl-day reveal">
+      <div class="tl-day-head"><span class="k" data-i18n="d1_kicker"><span class="i18-fr">Vendredi 4 septembre</span><span class="i18-es" lang="es">Viernes 4 de septiembre</span></span><h3 data-i18n="d1_theme"><span class="i18-fr">Embarquement immédiat</span><span class="i18-es" lang="es">Ponemos rumbo al finde</span></h3></div>
+      <div class="tl-list">
+        <div class="row"><div class="tm" data-i18n="d1_time"><span class="i18-fr">19:00</span><span class="i18-es" lang="es">19:00</span></div><div class="mk"><span class="dot together"></span></div>
+          <div class="cc"><span class="tag together" data-i18n="tag_together"><span class="i18-fr">Tous ensemble</span><span class="i18-es" lang="es">Todos juntos</span></span><p data-i18n="d1_body"><span class="i18-fr">RDV à partir de 19h00 à la cabane à huîtres <b>La Terrasse de la Moulinatte</b>. On fait connaissance autour de quelques huîtres et on profite du coucher de soleil.</span><span class="i18-es" lang="es">Nos vemos a partir de las 19:00 en la cabaña de ostras <b>La Terrasse de la Moulinatte</b>. Disfrutamos de la puesta de sol mientras degustamos las primeras ostras juntos.</span></p>
+            <div class="enc bike"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3.3"></circle><circle cx="18" cy="17" r="3.3"></circle><path d="M6 17 L10.5 8 H14.5 M10.5 8 L14.5 17 M13 8 H16.5"></path></svg><span data-i18n="d1_bike"><span class="i18-fr">Pour les cyclistes, départ 18:45 depuis L’Océan · ~15 min</span><span class="i18-es" lang="es">Para los ciclistas, salida 18:45 desde L’Océan · ~15 min</span></span></div>
+            <div class="enc dress"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8.4 V6.9 a2.15 2.15 0 1 1 2.15 -2.15"></path><path d="M12 8.4 L3.5 15.2 a1.05 1.05 0 0 0 .66 1.87 h15.68 a1.05 1.05 0 0 0 .66 -1.87 Z"></path></svg><span data-i18n="d1_dress"><span class="i18-fr">Venez comme vous êtes. Selon la météo, prévoyez un pull, car nous serons en bord de mer.</span><span class="i18-es" lang="es">Venid tal y como sois. Según el tiempo, traed un jersey, ya que estaremos junto al mar.</span></span></div></div></div>
+        <div class="row"><div class="tm" data-i18n="d1b_time"><span class="i18-fr">21:00</span><span class="i18-es" lang="es">21:00</span></div><div class="mk"><span class="dot together"></span></div>
+          <div class="cc"><span class="tag together" data-i18n="tag_together"><span class="i18-fr">Tous ensemble</span><span class="i18-es" lang="es">Todos juntos</span></span><p data-i18n="d1b"><span class="i18-fr">On file tous à la <b>maison Rousseau</b> pour un apéritif dînatoire.</span><span class="i18-es" lang="es">Vamos todos a la <b>casa Rousseau</b> para un aperitivo-cena.</span></p>
+            <div class="enc bike"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3.3"></circle><circle cx="18" cy="17" r="3.3"></circle><path d="M6 17 L10.5 8 H14.5 M10.5 8 L14.5 17 M13 8 H16.5"></path></svg><span data-i18n="d1b_bike"><span class="i18-fr">~15 min en vélo</span><span class="i18-es" lang="es">~15 min en bici</span></span></div></div></div>
+      </div>
+    </div>
+
+    <div class="tl-day reveal">
+      <div class="tl-day-head"><span class="k" data-i18n="d2_kicker"><span class="i18-fr">Samedi 5 septembre</span><span class="i18-es" lang="es">Sábado 5 de septiembre</span></span><h3 data-i18n="d2_theme"><span class="i18-fr">L’Écailler</span><span class="i18-es" lang="es">L’Écailler</span></h3></div>
+      <div class="tl-list">
+        <div class="row"><div class="tm" data-i18n="d2a_time"><span class="i18-fr">Matin</span><span class="i18-es" lang="es">Mañana</span></div><div class="mk"><span class="dot"></span></div>
+          <div class="cc"><span class="tag reco" data-i18n="tag_reco"><span class="i18-fr">Recommandation</span><span class="i18-es" lang="es">Recomendación</span></span><p data-i18n="d2a"><span class="i18-fr">Baladez-vous sur le <b>marché du Bois</b>, à 2 min de l’hôtel. Et pour ceux qui veulent voir la mer, la <b>plage des Gollandières</b> est à deux pas.</span><span class="i18-es" lang="es">Pasead por el <b>mercado del Bois</b>, a 2 min del hotel. Y para quien quiera ver el mar, la <b>playa des Gollandières</b> está muy cerca.</span></p>
+            <div class="enc walk"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="1.8"></circle><path d="M12 7 L10 13 L7 20 M10 13 L14 15 L16 20 M12 9 L16 11"></path></svg><span data-i18n="d2a_bike"><span class="i18-fr">À pied : marché 2 min, plage des Gollandières 5 min</span><span class="i18-es" lang="es">A pie: mercado 2 min, playa des Gollandières 5 min</span></span></div></div></div>
+        <div class="row"><div class="tm" data-i18n="d2b_time"><span class="i18-fr">12:00</span><span class="i18-es" lang="es">12:00</span></div><div class="mk"><span class="dot together"></span></div>
+          <div class="cc"><span class="tag together" data-i18n="tag_together"><span class="i18-fr">Tous ensemble</span><span class="i18-es" lang="es">Todos juntos</span></span><p data-i18n="d2b"><span class="i18-fr">Rendez-vous à midi pile sur la <b>plage de La Flotte</b> pour quelques photos tous ensemble.</span><span class="i18-es" lang="es">Nos vemos a las 12:00 en punto en la <b>playa de La Flotte</b> para unas fotos todos juntos.</span></p>
+            <div class="enc bike"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3.3"></circle><circle cx="18" cy="17" r="3.3"></circle><path d="M6 17 L10.5 8 H14.5 M10.5 8 L14.5 17 M13 8 H16.5"></path></svg><span data-i18n="d2b_bike"><span class="i18-fr">Pour les cyclistes, départ 11:30 depuis L’Océan · ~25 min</span><span class="i18-es" lang="es">Para los ciclistas, salida 11:30 desde L’Océan · ~25 min</span></span></div>
+            <div class="enc dress"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8.4 V6.9 a2.15 2.15 0 1 1 2.15 -2.15"></path><path d="M12 8.4 L3.5 15.2 a1.05 1.05 0 0 0 .66 1.87 h15.68 a1.05 1.05 0 0 0 .66 -1.87 Z"></path></svg><span data-i18n="d2b_dress"><span class="i18-fr">Faites-vous beaux pour les photos, matières légères, couleurs d’été. Hommes : chino ou pantalon en lin et chemise. Femmes : robe ou jupe longue.</span><span class="i18-es" lang="es">Poneos guapos para las fotos, tejidos ligeros, colores de verano. Hombres: chino o pantalón de lino y camisa. Mujeres: vestido o falda larga.</span></span></div></div></div>
+        <div class="row"><div class="tm" data-i18n="d2c_time"><span class="i18-fr">12:30<br>– 16:30</span><span class="i18-es" lang="es">12:30<br>– 16:30</span></div><div class="mk"><span class="dot together"></span></div>
+          <div class="cc"><span class="tag together" data-i18n="tag_together"><span class="i18-fr">Tous ensemble</span><span class="i18-es" lang="es">Todos juntos</span></span><p data-i18n="d2c"><span class="i18-fr">Déjeuner au restaurant <b>L’Écailler</b>. Le rendez-vous du jour.</span><span class="i18-es" lang="es">Comida en el restaurante <b>L’Écailler</b>. La cita del día.</span></p>
+            <div class="enc walk"><span data-i18n="d2c_bike"><span class="i18-fr">🚶 À 2 min de la plage de La Flotte</span><span class="i18-es" lang="es">🚶 A 2 min de la playa de La Flotte</span></span></div></div></div>
+        <div class="row"><div class="tm" data-i18n="d2d_time"><span class="i18-fr">Après-midi</span><span class="i18-es" lang="es">Tarde</span></div><div class="mk"><span class="dot"></span></div>
+          <div class="cc"><span class="tag reco" data-i18n="tag_reco"><span class="i18-fr">Recommandation</span><span class="i18-es" lang="es">Recomendación</span></span><p data-i18n="d2d"><span class="i18-fr">Pas de programme fixe. Vous pouvez en profiter pour explorer La Flotte (rue du Général de Gaulle). Pour ceux qui veulent se balader sur l’île, vous pouvez voir les recommandations plus bas.</span><span class="i18-es" lang="es">No hay programa fijo. Podéis aprovechar para explorar La Flotte (rue du Général de Gaulle). Y para quienes quieran recorrer la isla, podéis ver las recomendaciones más abajo.</span></p></div></div>
+      </div>
+    </div>
+
+    <div class="tl-day reveal">
+      <div class="tl-day-head"><span class="k" data-i18n="d3_kicker"><span class="i18-fr">Dimanche 6 septembre</span><span class="i18-es" lang="es">Domingo 6 de septiembre</span></span><h3 data-i18n="d3_theme"><span class="i18-fr">On prend le large</span><span class="i18-es" lang="es">A toda vela</span></h3></div>
+      <div class="tl-list">
+        
+        <div class="row"><div class="tm" data-i18n="d3z_time"><span class="i18-fr">Matin</span><span class="i18-es" lang="es">Mañana</span></div><div class="mk"><span class="dot"></span></div>
+          <div class="cc"><p data-i18n="d3z"><span class="i18-fr">Check-out des chambres et dépôt des bagages à <b>L’Océan</b>.</span><span class="i18-es" lang="es">Check-out de las habitaciones y dejar el equipaje en <b>L’Océan</b>.</span></p>
+            </div></div><div class="row"><div class="tm" data-i18n="d3b_time"><span class="i18-fr">10:45</span><span class="i18-es" lang="es">10:45</span></div><div class="mk"><span class="dot together"></span></div>
+          <div class="cc"><span class="tag together" data-i18n="tag_together"><span class="i18-fr">Tous ensemble</span><span class="i18-es" lang="es">Todos juntos</span></span><p data-i18n="d3b"><span class="i18-fr">RDV à l’<b>embarcadère de Saint-Martin</b> (lieu exact communiqué avant). Une attention toute particulière à ne pas être en retard.</span><span class="i18-es" lang="es">Cita en el <b>embarcadero de Saint-Martin</b> (lugar exacto se comunicará antes). Prestad especial atención a no llegar tarde.</span></p>
+            <div class="enc bike"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3.3"></circle><circle cx="18" cy="17" r="3.3"></circle><path d="M6 17 L10.5 8 H14.5 M10.5 8 L14.5 17 M13 8 H16.5"></path></svg><span data-i18n="d3b_bike"><span class="i18-fr">Pour les cyclistes, départ 10:20 depuis L’Océan · ~20 min</span><span class="i18-es" lang="es">Para los ciclistas, salida 10:20 desde L’Océan · ~20 min</span></span></div></div></div>
+        <div class="row"><div class="tm" data-i18n="d3c_time"><span class="i18-fr">11:00<br>– 13:00</span><span class="i18-es" lang="es">11:00<br>– 13:00</span></div><div class="mk"><span class="dot together"></span></div>
+          <div class="cc"><span class="tag together" data-i18n="tag_together"><span class="i18-fr">Tous ensemble</span><span class="i18-es" lang="es">Todos juntos</span></span><p data-i18n="d3c"><span class="i18-fr">Balade en bateau le long de l’île, agrémentée de commentaires historiques du skipper et arrosée de champagne. Nous clôturerons ce week-end sur notre échange d’alliances.</span><span class="i18-es" lang="es">Paseo en barco a lo largo de la isla, con los comentarios históricos del patrón y regado con champagne. Cerraremos el fin de semana con nuestro intercambio de alianzas.</span></p></div></div>
+        <div class="row"><div class="tm" data-i18n="d3d_time"><span class="i18-fr">13:00</span><span class="i18-es" lang="es">13:00</span></div><div class="mk"><span class="dot"></span></div>
+          <div class="cc"><span class="tag reco" data-i18n="tag_reco"><span class="i18-fr">Recommandation</span><span class="i18-es" lang="es">Recomendación</span></span><p data-i18n="d3d"><span class="i18-fr">Retour au quai de Saint-Martin. Session shopping libre à Saint-Martin.</span><span class="i18-es" lang="es">Vuelta al muelle de Saint-Martin. Tiempo libre para ir de compras por Saint-Martin.</span></p></div></div>
+      <div class="row"><div class="tm" data-i18n="d3e_time"><span class="i18-fr">14:30</span><span class="i18-es" lang="es">14:30</span></div><div class="mk"><span class="dot together"></span></div>
+          <div class="cc"><span class="tag together dashed" data-i18n="tag_together"><span class="i18-fr">Tous ensemble</span><span class="i18-es" lang="es">Todos juntos</span></span><p data-i18n="d3e"><span class="i18-fr">Pour ceux qui ne larguent pas les amarres trop tôt, on propose une balade à vélo jusqu’au village de <b>Loix</b>. Départ en vélo de Saint-Martin vers 14h30.</span><span class="i18-es" lang="es">Para quienes no zarpen demasiado pronto, proponemos un paseo en bici hasta el pueblo de <b>Loix</b>. Salida en bici desde Saint-Martin sobre las 14:30.</span></p></div></div><div class="row"><div class="tm" data-i18n="d3f_time"><span class="i18-fr">17:30</span><span class="i18-es" lang="es">17:30</span></div><div class="mk"><span class="dot"></span></div>
+          <div class="cc"><p data-i18n="d3f"><span class="i18-fr">Retour au Bois-Plage. Récupération des bagages à <b>L’Océan</b> et départ pour Nantes pour ceux qui ont un avion.</span><span class="i18-es" lang="es">Vuelta a Le Bois-Plage. Recogida del equipaje en <b>L’Océan</b> y salida hacia Nantes para quienes tengan avión.</span></p>
+            </div></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INCONTOURNABLES -->
+<section class="wrap">
+  <p class="eyebrow reveal" data-i18n="must_label"><span class="i18-fr">Les incontournables de l’île</span><span class="i18-es" lang="es">Los imprescindibles de la isla</span></p>
+  <p class="reveal" style="color:var(--ink-soft);margin:0 0 22px;font-size:15px" data-i18n="must_intro"><span class="i18-fr">Quelques idées si vous avez du temps libre.</span><span class="i18-es" lang="es">Algunas ideas si tenéis tiempo libre.</span></p>
+  <div class="reveal">
+    <div class="must"><span class="sw"></span><div><h3 data-i18n="must_marches_t"><span class="i18-fr">Faire les marchés</span><span class="i18-es" lang="es">Recorrer los mercados</span></h3><p data-i18n="must_marches"><span class="i18-fr">L’île de Ré propose de nombreux marchés, dans presque tous les villages de l’île. Les principaux : Le Bois-Plage, La Flotte, Saint-Martin-en-Ré, La Couarde, Ars-en-Ré et Les Portes.</span><span class="i18-es" lang="es">La isla de Ré tiene muchos mercados, en casi todos los pueblos de la isla. Los principales: Le Bois-Plage, La Flotte, Saint-Martin-en-Ré, La Couarde, Ars-en-Ré y Les Portes.</span></p></div></div>
+    <div class="must"><span class="sw"></span><div><h3 data-i18n="must_goll_t"><span class="i18-fr">Plage des Gollandières</span><span class="i18-es" lang="es">Playa des Gollandières</span></h3><p data-i18n="must_goll"><span class="i18-fr">La plage la plus proche, à 5 min à pied. Parfait pour une baignade rapide.</span><span class="i18-es" lang="es">La playa más cercana, a 5 min a pie. Perfecta para un chapuzón rápido.</span></p></div></div>
+    <div class="must"><span class="sw"></span><div><h3 data-i18n="must_couarde_t"><span class="i18-fr">La Couarde-sur-Mer</span><span class="i18-es" lang="es">La Couarde-sur-Mer</span></h3><p data-i18n="must_couarde"><span class="i18-fr">Village sympa à 15 min à vélo.</span><span class="i18-es" lang="es">Pueblo con encanto a 15 min en bici.</span></p></div></div>
+    <div class="must"><span class="sw"></span><div><h3 data-i18n="must_flotte_t"><span class="i18-fr">La Flotte</span><span class="i18-es" lang="es">La Flotte</span></h3><p data-i18n="must_flotte"><span class="i18-fr">Joli village à visiter, entre port et ruelles fleuries.</span><span class="i18-es" lang="es">Bonito pueblo para visitar, entre el puerto y callejuelas floridas.</span></p></div></div>
+    <div class="must"><span class="sw"></span><div><h3 data-i18n="must_martin_t"><span class="i18-fr">Saint-Martin-en-Ré</span><span class="i18-es" lang="es">Saint-Martin-en-Ré</span></h3><p data-i18n="must_martin"><span class="i18-fr">La capitale, riche d’histoire. C’est là qu’on prend le bateau dimanche.</span><span class="i18-es" lang="es">La capital, llena de historia. Es donde tomamos el barco el domingo.</span></p></div></div>
+    <div class="must"><span class="sw"></span><div><h3 data-i18n="must_ars_t"><span class="i18-fr">Ars-en-Ré / Trousse-Chemise à vélo</span><span class="i18-es" lang="es">Ars-en-Ré / Trousse-Chemise en bici</span></h3><p data-i18n="must_ars"><span class="i18-fr">~45-50 min depuis le Bois. Village magnifique, et la balade est superbe : on passe par le Fier d’Ars, entre les marais salants.<br><br>Pour les plus courageux, prolongez ~30-40 min jusqu’aux Portes-en-Ré puis <b>Trousse-Chemise</b>, la plus belle plage de l’île (idéalement à marée basse). Le phare des Baleines est juste à côté. Au retour, rentrez direct au Bois.</span><span class="i18-es" lang="es">~45-50 min desde el Bois. Pueblo precioso, y el trayecto es magnífico: se pasa por el Fier d’Ars, entre las salinas.<br><br>Para los más valientes, alargad ~30-40 min hasta Les Portes-en-Ré y luego <b>Trousse-Chemise</b>, la playa más bonita de la isla (ideal con marea baja). El faro des Baleines está al lado. A la vuelta, regresad directos al Bois.</span></p></div></div>
+  </div>
+</section>
+
+<div class="strip reveal"><svg class="scene" viewBox="0 0 800 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="wcSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7E7DD"></stop>
+      <stop offset="34%" stop-color="#F5D9CC"></stop>
+      <stop offset="60%" stop-color="#E9C2C4"></stop>
+      <stop offset="100%" stop-color="#B9A8CC"></stop>
+    </linearGradient>
+    <radialGradient id="wcSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FBEFD6"></stop>
+      <stop offset="55%" stop-color="#F6CDA8"></stop>
+      <stop offset="100%" stop-color="#F6CDA8" stop-opacity="0"></stop>
+    </radialGradient>
+    <linearGradient id="wcWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9C4CE"></stop>
+      <stop offset="100%" stop-color="#9FB0C9"></stop>
+    </linearGradient>
+    <filter id="wcPaint" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="2" seed="7" result="n"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+    </filter>
+    <filter id="wcSoft"><feGaussianBlur stdDeviation="1.1"></feGaussianBlur></filter>
+    <filter id="wcGrain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"></feTurbulence>
+      <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+  </defs>
+
+  <rect width="800" height="520" fill="url(#wcSky)"></rect>
+  <ellipse cx="392" cy="168" rx="150" ry="140" fill="url(#wcSun)" opacity=".9"></ellipse>
+
+  <!-- distant land band (soft) -->
+  <g filter="url(#wcPaint)">
+    <path d="M0 262 Q150 244 300 258 T560 254 T800 260 L800 300 L0 300Z" fill="#8FA8B4" opacity=".5"></path>
+    <path d="M0 270 Q180 258 360 268 T720 266 T800 270 L800 300 L0 300Z" fill="#7C93A8" opacity=".48"></path>
+  </g>
+
+  <!-- Ile de Re bridge, discreet on the right -->
+  <g filter="url(#wcSoft)" opacity=".4" stroke="#6E7E92" fill="none">
+    <path d="M582 256 Q700 234 812 250" stroke-width="2.4"></path>
+    <g stroke-width="1.4">
+      <line x1="612" y1="250" x2="612" y2="262"></line>
+      <line x1="648" y1="246" x2="648" y2="260"></line>
+      <line x1="686" y1="242" x2="686" y2="258"></line>
+      <line x1="726" y1="240" x2="726" y2="256"></line>
+      <line x1="768" y1="242" x2="768" y2="256"></line>
+    </g>
+  </g>
+
+  <!-- village + Ars clocher: single (highest) black cap -->
+  <g filter="url(#wcSoft)">
+    <rect x="356" y="252" width="16" height="13" fill="#F3E9DE"></rect>
+    <rect x="374" y="250" width="20" height="15" fill="#EFE0D2"></rect>
+    <path d="M356 252 l8 -7 l8 7Z" fill="#C98B72"></path>
+    <path d="M374 250 l10 -8 l10 8Z" fill="#C98B72"></path>
+    <rect x="411" y="196" width="17" height="70" fill="#F4EDE3"></rect>
+    <path d="M411 196 L419.5 150 L428 196Z" fill="#2E3A54"></path>
+    <rect x="416" y="230" width="7" height="9" fill="#2E3A54" opacity=".55"></rect>
+  </g>
+
+  <!-- distant sailboats on the sea -->
+  <g filter="url(#wcSoft)">
+    <g fill="#F4EDE3" stroke="#2E3A54" stroke-width="1">
+      <path d="M150 244 l0 -16 l9 16 z"></path><path d="M144 244 q6 5 15 0 q-4 4 -7.5 4 q-3.5 0 -7.5 -4z" fill="#2E3A54" stroke="none"></path>
+      <path d="M214 250 l0 -12 l7 12 z"></path><path d="M209 250 q5 4 12 0 q-3 3 -6 3 q-3 0 -6 -3z" fill="#2E3A54" stroke="none"></path>
+      <path d="M92 252 l0 -10 l6 10 z"></path><path d="M88 252 q4 3 10 0 q-2.5 2.5 -5 2.5 q-2.5 0 -5 -2.5z" fill="#2E3A54" stroke="none"></path>
+    </g>
+  </g>
+
+  <!-- water / marais salants -->
+  <g filter="url(#wcPaint)">
+    <rect x="0" y="298" width="800" height="150" fill="url(#wcWater)" opacity=".9"></rect>
+    <rect x="412" y="298" width="13" height="66" fill="#8F7F98" opacity=".3"></rect>
+    <g stroke="#EAD9C4" stroke-width="5" opacity=".7">
+      <line x1="0" y1="330" x2="800" y2="330"></line>
+      <line x1="0" y1="372" x2="800" y2="372"></line>
+      <line x1="0" y1="414" x2="800" y2="414"></line>
+      <line x1="130" y1="300" x2="130" y2="446"></line>
+      <line x1="300" y1="300" x2="300" y2="446"></line>
+      <line x1="470" y1="300" x2="470" y2="446"></line>
+      <line x1="640" y1="300" x2="640" y2="446"></line>
+    </g>
+    <rect x="132" y="332" width="166" height="38" fill="#E7C7C9" opacity=".4"></rect>
+    <rect x="472" y="374" width="166" height="38" fill="#C9B6D0" opacity=".4"></rect>
+    <rect x="302" y="416" width="166" height="28" fill="#E7C7C9" opacity=".35"></rect>
+  </g>
+
+  <!-- salt mounds -->
+  <g filter="url(#wcSoft)" fill="#FBF4EC" opacity=".92">
+    <path d="M150 330 q13 -20 26 0Z"></path>
+    <path d="M320 372 q12 -18 24 0Z"></path>
+    <path d="M612 330 q13 -20 26 0Z"></path>
+  </g>
+
+  <!-- paludiers with their las (long-handled rake) -->
+  <g filter="url(#wcSoft)">
+    <!-- worker 1, on the 330 levee, drawing salt toward him -->
+    <g opacity=".97">
+      <!-- las: wooden shaft + flat blade lying in the pan -->
+      <line x1="210" y1="323" x2="190" y2="350" stroke="#9A7550" stroke-width="1.9" stroke-linecap="round"></line>
+      <path d="M182 351 L197 350" stroke="#6F5540" stroke-width="3" stroke-linecap="round"></path>
+      <!-- legs + boots -->
+      <path d="M215.4 333 L212.5 344" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M216.6 333 L220 344" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M212.5 344.6 L209.8 346 M220 344.6 L222.8 346" stroke="#252E44" stroke-width="2.6" stroke-linecap="round"></path>
+      <!-- torso, light linen shirt, slight forward lean -->
+      <path d="M217 321.5 L215.6 333.5" stroke="#F2E8DC" stroke-width="5" stroke-linecap="round"></path>
+      <!-- both arms reaching to the shaft -->
+      <path d="M216.4 324 Q212 322.6 210.2 323.2" stroke="#F2E8DC" stroke-width="2.1" stroke-linecap="round" fill="none"></path>
+      <path d="M215.8 328 Q211 327.4 208.4 325.6" stroke="#EADFD0" stroke-width="1.9" stroke-linecap="round" fill="none"></path>
+      <!-- neck, head, wide straw hat -->
+      <path d="M217 320 L217.2 318.4" stroke="#C99C79" stroke-width="1.8" stroke-linecap="round"></path>
+      <circle cx="217.2" cy="317.4" r="2.3" fill="#C99C79"></circle>
+      <path d="M211.4 316.2 Q217.2 314.6 223 316.2" stroke="#DCB57F" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+      <path d="M214.2 316.2 q3 -3.6 6 0Z" fill="#DCB57F"></path>
+      <!-- reflection in the brine -->
+      <path d="M216 346 L215 352" stroke="#6E7E92" stroke-width="2.6" stroke-linecap="round" opacity=".22"></path>
+    </g>
+    <!-- worker 2, on the 372 levee, seen from behind -->
+    <g opacity=".93">
+      <line x1="527" y1="365" x2="547" y2="390" stroke="#9A7550" stroke-width="1.9" stroke-linecap="round"></line>
+      <path d="M540 391 L555 390" stroke="#6F5540" stroke-width="3" stroke-linecap="round"></path>
+      <path d="M519.6 375 L516.6 386" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M520.8 375 L524.2 386" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M516.6 386.6 L513.9 388 M524.2 386.6 L527 388" stroke="#252E44" stroke-width="2.6" stroke-linecap="round"></path>
+      <path d="M519.4 363.5 L520 375.5" stroke="#E6D8E2" stroke-width="5" stroke-linecap="round"></path>
+      <path d="M520 366 Q524.4 364.6 526.4 365.2" stroke="#E6D8E2" stroke-width="2.1" stroke-linecap="round" fill="none"></path>
+      <path d="M520.4 370 Q525.4 369.4 528 367.6" stroke="#DCCDD8" stroke-width="1.9" stroke-linecap="round" fill="none"></path>
+      <path d="M519.4 362 L519.2 360.4" stroke="#C99C79" stroke-width="1.8" stroke-linecap="round"></path>
+      <circle cx="519.2" cy="359.4" r="2.3" fill="#C99C79"></circle>
+      <path d="M513.4 358.2 Q519.2 356.6 525 358.2" stroke="#DCB57F" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+      <path d="M516.2 358.2 q3 -3.6 6 0Z" fill="#DCB57F"></path>
+      <path d="M520 388 L521 394" stroke="#6E7E92" stroke-width="2.6" stroke-linecap="round" opacity=".2"></path>
+    </g>
+  </g>
+
+  <!-- foreground marsh grass + poppies -->
+  <g filter="url(#wcPaint)">
+    <path d="M0 446 Q200 430 400 448 T800 446 L800 520 L0 520Z" fill="#8CA07E" opacity=".85"></path>
+    <path d="M0 474 Q220 462 440 476 T800 474 L800 520 L0 520Z" fill="#6E8666" opacity=".8"></path>
+  </g>
+  <g filter="url(#wcSoft)" fill="#E38A72" opacity=".9">
+    <circle cx="96" cy="470" r="7"></circle><circle cx="128" cy="488" r="6"></circle>
+    <circle cx="690" cy="474" r="7"></circle><circle cx="662" cy="492" r="5"></circle>
+  </g>
+
+  <rect width="800" height="520" filter="url(#wcGrain)" opacity=".05"></rect>
+</svg></div>
+
+<!-- POINTS DE RENDEZ-VOUS -->
+<section class="wrap">
+  <p class="eyebrow reveal" data-i18n="rdv_label"><span class="i18-fr">Points de rendez-vous</span><span class="i18-es" lang="es">Puntos de encuentro</span></p>
+  <div class="reveal">
+    <a class="rdv" data-link="rousseau" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=48+rue+du+Four+Le+Bois-Plage-en-Re"><div><h4 data-i18n="rdv_rousseau_t"><span class="i18-fr">Maison Rousseau</span><span class="i18-es" lang="es">Casa Rousseau</span></h4><span class="meta" data-i18n="rdv_rousseau"><span class="i18-fr">48 rue du Four, Le Bois-Plage</span><span class="i18-es" lang="es">48 rue du Four, Le Bois-Plage</span></span></div><span class="go" data-i18n="map"><span class="i18-fr">Voir sur la carte</span><span class="i18-es" lang="es">Ver en el mapa</span></span></a>
+    <a class="rdv" data-link="ocean" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+L%27Ocean+172+rue+de+Saint-Martin+Le+Bois-Plage-en-Re"><div><h4 data-i18n="rdv_ocean_t"><span class="i18-fr">Hôtel L’Océan</span><span class="i18-es" lang="es">Hotel L’Océan</span></h4><span class="meta" data-i18n="rdv_ocean"><span class="i18-fr">172 rue de Saint-Martin, Le Bois-Plage</span><span class="i18-es" lang="es">172 rue de Saint-Martin, Le Bois-Plage</span></span></div><span class="go" data-i18n="map"><span class="i18-fr">Voir sur la carte</span><span class="i18-es" lang="es">Ver en el mapa</span></span></a>
+    <a class="rdv" data-link="guillardeau" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Td8fnrsuLieq9sxW9"><div><h4 data-i18n="rdv_guill_t"><span class="i18-fr">La Terrasse de la Moulinatte</span><span class="i18-es" lang="es">La Terrasse de la Moulinatte</span></h4><span class="meta" data-i18n="rdv_guill"><span class="i18-fr">Cabane à huîtres · vendredi soir</span><span class="i18-es" lang="es">Cabaña de ostras · viernes por la noche</span></span></div><span class="go" data-i18n="map"><span class="i18-fr">Voir sur la carte</span><span class="i18-es" lang="es">Ver en el mapa</span></span></a>
+    <a class="rdv" data-link="ecailler" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant+L%27Ecailler+3+quai+de+Senac+La+Flotte"><div><h4 data-i18n="rdv_ecailler_t"><span class="i18-fr">Restaurant L’Écailler</span><span class="i18-es" lang="es">Restaurante L’Écailler</span></h4><span class="meta" data-i18n="rdv_ecailler"><span class="i18-fr">Port de La Flotte · déjeuner du samedi</span><span class="i18-es" lang="es">Puerto de La Flotte · comida del sábado</span></span></div><span class="go" data-i18n="map"><span class="i18-fr">Voir sur la carte</span><span class="i18-es" lang="es">Ver en el mapa</span></span></a>
+    <a class="rdv" data-link="embarcadere" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Embarcadere+Saint-Martin-de-Re"><div><h4 data-i18n="rdv_embarc_t"><span class="i18-fr">Embarcadère</span><span class="i18-es" lang="es">Embarcadero</span></h4><span class="meta" data-i18n="rdv_embarc"><span class="i18-fr">Saint-Martin · dimanche</span><span class="i18-es" lang="es">Saint-Martin · domingo</span></span></div><span class="go" data-i18n="map"><span class="i18-fr">Voir sur la carte</span><span class="i18-es" lang="es">Ver en el mapa</span></span></a>
+  </div>
+</section>
+
+<!-- INFOS PRATIQUES -->
+<section class="wrap">
+  <p class="eyebrow reveal" data-i18n="info_label"><span class="i18-fr">Infos pratiques</span><span class="i18-es" lang="es">Información práctica</span></p>
+  <div class="reveal">
+    <div class="blk"><h3 data-i18n="park_t"><span class="i18-fr">Se garer</span><span class="i18-es" lang="es">Aparcar</span></h3><p data-i18n="park_body"><span class="i18-fr">Deux petits parkings à l’extérieur du Bois-Plage :</span><span class="i18-es" lang="es">Dos pequeños aparcamientos en las afueras del Bois-Plage:</span></p>
+      <a class="maplink" data-link="park1" target="_blank" rel="noopener" href="https://maps.app.goo.gl/ZcPouk37HBsFxVZBA"><span data-i18n="park1"><span class="i18-fr">Rue de la Caillette</span><span class="i18-es" lang="es">Rue de la Caillette</span></span></a><br>
+      <a class="maplink" data-link="park2" target="_blank" rel="noopener" href="https://maps.app.goo.gl/j83Y3rgWzpa4AyLj6"><span data-i18n="park2"><span class="i18-fr">Parking libre</span><span class="i18-es" lang="es">Aparcamiento libre</span></span></a>
+    </div>
+    <div class="blk"><h3 data-i18n="bike_t"><span class="i18-fr">Se déplacer à vélo</span><span class="i18-es" lang="es">Moverse en bici</span></h3><p data-i18n="bike_body"><span class="i18-fr">C’est LA façon de profiter de l’île et de découvrir sa beauté. Moins vous prenez la voiture, mieux vous vous porterez. On a plus de vélos qu’il n’en faut à la maison Rousseau, n’hésitez surtout pas à venir en demander&nbsp;!</span><span class="i18-es" lang="es">Es LA forma de disfrutar de la isla y descubrir su belleza. Cuanto menos uséis el coche, mejor. En la casa Rousseau tenemos bicis de sobra, ¡no dudéis en venir a pedir una!</span></p><div class="tip" data-i18n="bike_tip"><span class="i18-fr">À vélo, n’utilisez pas Google Maps, il vous fait passer par la route. Utilisez plutôt l’app <b>Geovelo</b>, qui vous envoie sur les pistes cyclables.</span><span class="i18-es" lang="es">En bici, no uséis Google Maps, os lleva por la carretera. Usad mejor la app <b>Geovelo</b>, que os envía por los carriles bici.</span></div></div>
+  </div>
+</section>
+
+<!-- LE SAVIEZ-VOUS -->
+<section class="wrap">
+  <p class="eyebrow reveal" data-i18n="facts_label"><span class="i18-fr">Le saviez-vous&nbsp;?</span><span class="i18-es" lang="es">¿Sabíais que…?</span></p>
+  <p class="reveal" style="color:var(--ink-soft);margin:0 0 10px;font-size:15px" data-i18n="facts_intro"><span class="i18-fr">Touchez un lieu pour son anecdote.</span><span class="i18-es" lang="es">Toca un lugar para su anécdota.</span></p>
+  <div class="facts reveal">
+    <details class="fact">
+      <summary><span data-i18n="fact_flotte_t"><span class="i18-fr">La Flotte</span><span class="i18-es" lang="es">La Flotte</span></span><span class="plus">+</span></summary>
+      <div class="body"><p data-i18n="fact_flotte"><span class="i18-fr">Un des plus anciens villages de l’île : un port y existe déjà aux 13<sup>e</sup>-14<sup>e</sup> siècles, et son marché médiéval sous halle en bois perpétue cette ambiance. À la sortie, l’abbaye des Châteliers, le plus ancien édifice religieux de l’île (cistercienne, ~1156), détruite pendant la guerre de Cent Ans puis les guerres de religion. Ses pierres ont servi à bâtir le Fort La Prée.</span><span class="i18-es" lang="es">Uno de los pueblos más antiguos de la isla: ya había un puerto en los siglos XIII-XIV, y su mercado medieval bajo una lonja de madera mantiene ese ambiente. A la salida, la abadía des Châteliers, el edificio religioso más antiguo de la isla (cisterciense, ~1156), destruida durante la guerra de los Cien Años y las guerras de religión. Sus piedras sirvieron para construir el Fort La Prée.</span></p></div>
+    </details>
+    <details class="fact">
+      <summary><span data-i18n="fact_martin_t"><span class="i18-fr">Saint-Martin-en-Ré</span><span class="i18-es" lang="es">Saint-Martin-en-Ré</span></span><span class="plus">+</span></summary>
+      <div class="body"><p data-i18n="fact_martin"><span class="i18-fr">La capitale historique de l’île. Pour la défendre des Anglais, Louis XIV charge Vauban d’ériger une place forte : 14 km de remparts en demi-cercle, classés à l’UNESCO depuis 2008. Plus tard, sa citadelle devient, de 1873 à 1938, l’unique point de départ des bagnards vers la Guyane et la Nouvelle-Calédonie — Dreyfus et “Papillon” y sont passés.</span><span class="i18-es" lang="es">La capital histórica de la isla. Para defenderla de los ingleses, Luis XIV encargó a Vauban una fortaleza: 14 km de murallas en semicírculo, Patrimonio de la Humanidad de la UNESCO desde 2008. Más tarde, su ciudadela fue, de 1873 a 1938, el único punto de partida de los presidiarios hacia la Guayana y Nueva Caledonia — Dreyfus y “Papillon” pasaron por allí.</span></p></div>
+    </details>
+    <details class="fact">
+      <summary><span data-i18n="fact_bois_t"><span class="i18-fr">Le Bois-Plage</span><span class="i18-es" lang="es">Le Bois-Plage</span></span><span class="plus">+</span></summary>
+      <div class="body"><p data-i18n="fact_bois"><span class="i18-fr">Le village central de l’île, idéalement placé pour rayonner dans toutes les directions. C’est aussi le cœur viticole de Ré (vignes, pineau et cognac), avec la plus longue plage de l’île.</span><span class="i18-es" lang="es">El pueblo central de la isla, muy bien situado para moverse en todas direcciones. Es también el corazón vinícola de Ré (viñas, pineau y coñac), con la playa más larga de la isla.</span></p></div>
+    </details>
+    <details class="fact">
+      <summary><span data-i18n="fact_ars_t"><span class="i18-fr">Ars-en-Ré</span><span class="i18-es" lang="es">Ars-en-Ré</span></span><span class="plus">+</span></summary>
+      <div class="body"><p data-i18n="fact_ars"><span class="i18-fr">Impossible de rater son clocher noir et blanc : ce n’est pas qu’une déco, c’est un amer, un repère peint pour guider les marins depuis la mer. En bas, sur la place, le marché anime les matinées, entouré des marais salants et du fameux sel de Ré.</span><span class="i18-es" lang="es">Imposible no ver su campanario blanco y negro: no es solo decoración, es una baliza, un punto de referencia pintado para guiar a los marineros desde el mar. Abajo, en la plaza, el mercado anima las mañanas, rodeado de salinas y de la famosa sal de Ré.</span></p></div>
+    </details>
+    <details class="fact">
+      <summary><span data-i18n="fact_trousse_t"><span class="i18-fr">Trousse-Chemise</span><span class="i18-es" lang="es">Trousse-Chemise</span></span><span class="plus">+</span></summary>
+      <div class="body"><p data-i18n="fact_trousse"><span class="i18-fr">La plage la plus sauvage de l’île, au “bout du bout”. Son secret : “le mao”, un courant marin qui revient du Fier d’Ars et se forme près du bord quand la mer monte. Le jeu : se laisser porter à contre-sens sur plusieurs centaines de mètres.</span><span class="i18-es" lang="es">La playa más salvaje de la isla, en la punta. Su secreto: “le mao”, una corriente marina que vuelve del Fier d’Ars y se forma cerca de la orilla cuando sube la marea. El juego: dejarse llevar a contracorriente durante varios cientos de metros.</span></p></div>
+    </details>
+  </div>
+</section>
+
+<!-- HOTELS -->
+<section class="wrap">
+  <p class="eyebrow reveal" data-i18n="hotels_label"><span class="i18-fr">Hôtels</span><span class="i18-es" lang="es">Hoteles</span></p>
+  <p class="reveal" style="color:var(--ink-soft);margin:0 0 8px;font-size:15px" data-i18n="hotels_intro"><span class="i18-fr">Pour ceux qui veulent prolonger le séjour, quelques adresses sur l’île.</span><span class="i18-es" lang="es">Para quienes quieran alargar la estancia, algunas direcciones en la isla.</span></p>
+  <div class="reveal">
+    <p class="hgroup" data-i18n="hotels_sm"><span class="i18-fr">Saint-Martin-en-Ré</span><span class="i18-es" lang="es">Saint-Martin-en-Ré</span></p>
+    <a class="rdv" data-link="maisondouce" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=La+Maison+Douce+Saint-Martin-de-Re"><div><h4 data-i18n="hotel_maisondouce_t"><span class="i18-fr">La Maison Douce</span><span class="i18-es" lang="es">La Maison Douce</span></h4><span class="meta" data-i18n="hotel_maisondouce"><span class="i18-fr">Maison d’hôtes de charme</span><span class="i18-es" lang="es">Casa de huéspedes con encanto</span></span></div><span class="go" data-i18n="map"><span class="i18-fr">Voir sur la carte</span><span class="i18-es" lang="es">Ver en el mapa</span></span></a>
+    <a class="rdv" data-link="clos" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Clos+Saint-Martin+Hotel+Spa+Saint-Martin-de-Re"><div><h4 data-i18n="hotel_clos_t"><span class="i18-fr">Le Clos Saint-Martin</span><span class="i18-es" lang="es">Le Clos Saint-Martin</span></h4><span class="meta" data-i18n="hotel_clos"><span class="i18-fr">Hôtel &amp; Spa</span><span class="i18-es" lang="es">Hotel &amp; Spa</span></span></div><span class="go" data-i18n="map"><span class="i18-fr">Voir sur la carte</span><span class="i18-es" lang="es">Ver en el mapa</span></span></a>
+    <p class="hgroup" data-i18n="hotels_fl"><span class="i18-fr">La Flotte</span><span class="i18-es" lang="es">La Flotte</span></p>
+    <a class="rdv" data-link="richelieu" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Le+Richelieu+La+Flotte+Ile+de+Re"><div><h4 data-i18n="hotel_richelieu_t"><span class="i18-fr">Le Richelieu</span><span class="i18-es" lang="es">Le Richelieu</span></h4><span class="meta" data-i18n="hotel_richelieu"><span class="i18-fr">Hôtel &amp; Spa, front de mer</span><span class="i18-es" lang="es">Hotel &amp; Spa, frente al mar</span></span></div><span class="go" data-i18n="map"><span class="i18-fr">Voir sur la carte</span><span class="i18-es" lang="es">Ver en el mapa</span></span></a>
+  </div>
+</section>
+
+<footer>
+  <svg class="scene" viewBox="0 0 800 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="wcSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7E7DD"></stop>
+      <stop offset="34%" stop-color="#F5D9CC"></stop>
+      <stop offset="60%" stop-color="#E9C2C4"></stop>
+      <stop offset="100%" stop-color="#B9A8CC"></stop>
+    </linearGradient>
+    <radialGradient id="wcSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FBEFD6"></stop>
+      <stop offset="55%" stop-color="#F6CDA8"></stop>
+      <stop offset="100%" stop-color="#F6CDA8" stop-opacity="0"></stop>
+    </radialGradient>
+    <linearGradient id="wcWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9C4CE"></stop>
+      <stop offset="100%" stop-color="#9FB0C9"></stop>
+    </linearGradient>
+    <filter id="wcPaint" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="2" seed="7" result="n"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+    </filter>
+    <filter id="wcSoft"><feGaussianBlur stdDeviation="1.1"></feGaussianBlur></filter>
+    <filter id="wcGrain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"></feTurbulence>
+      <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+  </defs>
+
+  <rect width="800" height="520" fill="url(#wcSky)"></rect>
+  <ellipse cx="392" cy="168" rx="150" ry="140" fill="url(#wcSun)" opacity=".9"></ellipse>
+
+  <!-- distant land band (soft) -->
+  <g filter="url(#wcPaint)">
+    <path d="M0 262 Q150 244 300 258 T560 254 T800 260 L800 300 L0 300Z" fill="#8FA8B4" opacity=".5"></path>
+    <path d="M0 270 Q180 258 360 268 T720 266 T800 270 L800 300 L0 300Z" fill="#7C93A8" opacity=".48"></path>
+  </g>
+
+  <!-- Ile de Re bridge, discreet on the right -->
+  <g filter="url(#wcSoft)" opacity=".4" stroke="#6E7E92" fill="none">
+    <path d="M582 256 Q700 234 812 250" stroke-width="2.4"></path>
+    <g stroke-width="1.4">
+      <line x1="612" y1="250" x2="612" y2="262"></line>
+      <line x1="648" y1="246" x2="648" y2="260"></line>
+      <line x1="686" y1="242" x2="686" y2="258"></line>
+      <line x1="726" y1="240" x2="726" y2="256"></line>
+      <line x1="768" y1="242" x2="768" y2="256"></line>
+    </g>
+  </g>
+
+  <!-- village + Ars clocher: single (highest) black cap -->
+  <g filter="url(#wcSoft)">
+    <rect x="356" y="252" width="16" height="13" fill="#F3E9DE"></rect>
+    <rect x="374" y="250" width="20" height="15" fill="#EFE0D2"></rect>
+    <path d="M356 252 l8 -7 l8 7Z" fill="#C98B72"></path>
+    <path d="M374 250 l10 -8 l10 8Z" fill="#C98B72"></path>
+    <rect x="411" y="196" width="17" height="70" fill="#F4EDE3"></rect>
+    <path d="M411 196 L419.5 150 L428 196Z" fill="#2E3A54"></path>
+    <rect x="416" y="230" width="7" height="9" fill="#2E3A54" opacity=".55"></rect>
+  </g>
+
+  <!-- distant sailboats on the sea -->
+  <g filter="url(#wcSoft)">
+    <g fill="#F4EDE3" stroke="#2E3A54" stroke-width="1">
+      <path d="M150 244 l0 -16 l9 16 z"></path><path d="M144 244 q6 5 15 0 q-4 4 -7.5 4 q-3.5 0 -7.5 -4z" fill="#2E3A54" stroke="none"></path>
+      <path d="M214 250 l0 -12 l7 12 z"></path><path d="M209 250 q5 4 12 0 q-3 3 -6 3 q-3 0 -6 -3z" fill="#2E3A54" stroke="none"></path>
+      <path d="M92 252 l0 -10 l6 10 z"></path><path d="M88 252 q4 3 10 0 q-2.5 2.5 -5 2.5 q-2.5 0 -5 -2.5z" fill="#2E3A54" stroke="none"></path>
+    </g>
+  </g>
+
+  <!-- water / marais salants -->
+  <g filter="url(#wcPaint)">
+    <rect x="0" y="298" width="800" height="150" fill="url(#wcWater)" opacity=".9"></rect>
+    <rect x="412" y="298" width="13" height="66" fill="#8F7F98" opacity=".3"></rect>
+    <g stroke="#EAD9C4" stroke-width="5" opacity=".7">
+      <line x1="0" y1="330" x2="800" y2="330"></line>
+      <line x1="0" y1="372" x2="800" y2="372"></line>
+      <line x1="0" y1="414" x2="800" y2="414"></line>
+      <line x1="130" y1="300" x2="130" y2="446"></line>
+      <line x1="300" y1="300" x2="300" y2="446"></line>
+      <line x1="470" y1="300" x2="470" y2="446"></line>
+      <line x1="640" y1="300" x2="640" y2="446"></line>
+    </g>
+    <rect x="132" y="332" width="166" height="38" fill="#E7C7C9" opacity=".4"></rect>
+    <rect x="472" y="374" width="166" height="38" fill="#C9B6D0" opacity=".4"></rect>
+    <rect x="302" y="416" width="166" height="28" fill="#E7C7C9" opacity=".35"></rect>
+  </g>
+
+  <!-- salt mounds -->
+  <g filter="url(#wcSoft)" fill="#FBF4EC" opacity=".92">
+    <path d="M150 330 q13 -20 26 0Z"></path>
+    <path d="M320 372 q12 -18 24 0Z"></path>
+    <path d="M612 330 q13 -20 26 0Z"></path>
+  </g>
+
+  <!-- paludiers with their las (long-handled rake) -->
+  <g filter="url(#wcSoft)">
+    <!-- worker 1, on the 330 levee, drawing salt toward him -->
+    <g opacity=".97">
+      <!-- las: wooden shaft + flat blade lying in the pan -->
+      <line x1="210" y1="323" x2="190" y2="350" stroke="#9A7550" stroke-width="1.9" stroke-linecap="round"></line>
+      <path d="M182 351 L197 350" stroke="#6F5540" stroke-width="3" stroke-linecap="round"></path>
+      <!-- legs + boots -->
+      <path d="M215.4 333 L212.5 344" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M216.6 333 L220 344" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M212.5 344.6 L209.8 346 M220 344.6 L222.8 346" stroke="#252E44" stroke-width="2.6" stroke-linecap="round"></path>
+      <!-- torso, light linen shirt, slight forward lean -->
+      <path d="M217 321.5 L215.6 333.5" stroke="#F2E8DC" stroke-width="5" stroke-linecap="round"></path>
+      <!-- both arms reaching to the shaft -->
+      <path d="M216.4 324 Q212 322.6 210.2 323.2" stroke="#F2E8DC" stroke-width="2.1" stroke-linecap="round" fill="none"></path>
+      <path d="M215.8 328 Q211 327.4 208.4 325.6" stroke="#EADFD0" stroke-width="1.9" stroke-linecap="round" fill="none"></path>
+      <!-- neck, head, wide straw hat -->
+      <path d="M217 320 L217.2 318.4" stroke="#C99C79" stroke-width="1.8" stroke-linecap="round"></path>
+      <circle cx="217.2" cy="317.4" r="2.3" fill="#C99C79"></circle>
+      <path d="M211.4 316.2 Q217.2 314.6 223 316.2" stroke="#DCB57F" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+      <path d="M214.2 316.2 q3 -3.6 6 0Z" fill="#DCB57F"></path>
+      <!-- reflection in the brine -->
+      <path d="M216 346 L215 352" stroke="#6E7E92" stroke-width="2.6" stroke-linecap="round" opacity=".22"></path>
+    </g>
+    <!-- worker 2, on the 372 levee, seen from behind -->
+    <g opacity=".93">
+      <line x1="527" y1="365" x2="547" y2="390" stroke="#9A7550" stroke-width="1.9" stroke-linecap="round"></line>
+      <path d="M540 391 L555 390" stroke="#6F5540" stroke-width="3" stroke-linecap="round"></path>
+      <path d="M519.6 375 L516.6 386" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M520.8 375 L524.2 386" stroke="#3E4763" stroke-width="2.4" stroke-linecap="round"></path>
+      <path d="M516.6 386.6 L513.9 388 M524.2 386.6 L527 388" stroke="#252E44" stroke-width="2.6" stroke-linecap="round"></path>
+      <path d="M519.4 363.5 L520 375.5" stroke="#E6D8E2" stroke-width="5" stroke-linecap="round"></path>
+      <path d="M520 366 Q524.4 364.6 526.4 365.2" stroke="#E6D8E2" stroke-width="2.1" stroke-linecap="round" fill="none"></path>
+      <path d="M520.4 370 Q525.4 369.4 528 367.6" stroke="#DCCDD8" stroke-width="1.9" stroke-linecap="round" fill="none"></path>
+      <path d="M519.4 362 L519.2 360.4" stroke="#C99C79" stroke-width="1.8" stroke-linecap="round"></path>
+      <circle cx="519.2" cy="359.4" r="2.3" fill="#C99C79"></circle>
+      <path d="M513.4 358.2 Q519.2 356.6 525 358.2" stroke="#DCB57F" stroke-width="1.8" stroke-linecap="round" fill="none"></path>
+      <path d="M516.2 358.2 q3 -3.6 6 0Z" fill="#DCB57F"></path>
+      <path d="M520 388 L521 394" stroke="#6E7E92" stroke-width="2.6" stroke-linecap="round" opacity=".2"></path>
+    </g>
+  </g>
+
+  <!-- foreground marsh grass + poppies -->
+  <g filter="url(#wcPaint)">
+    <path d="M0 446 Q200 430 400 448 T800 446 L800 520 L0 520Z" fill="#8CA07E" opacity=".85"></path>
+    <path d="M0 474 Q220 462 440 476 T800 474 L800 520 L0 520Z" fill="#6E8666" opacity=".8"></path>
+  </g>
+  <g filter="url(#wcSoft)" fill="#E38A72" opacity=".9">
+    <circle cx="96" cy="470" r="7"></circle><circle cx="128" cy="488" r="6"></circle>
+    <circle cx="690" cy="474" r="7"></circle><circle cx="662" cy="492" r="5"></circle>
+  </g>
+
+  <rect width="800" height="520" filter="url(#wcGrain)" opacity=".05"></rect>
+</svg>
+  <div class="fscrim"></div>
+  <div class="fin">
+    <div class="fnames" data-i18n="names"><span class="i18-fr">Maria <span class="amp">&amp;</span> Arnaud</span><span class="i18-es" lang="es">Maria <span class="amp">&amp;</span> Arnaud</span></div>
+    <div class="fmsg" data-i18n="footer"><span class="i18-fr">À très vite sur l’île&nbsp;!</span><span class="i18-es" lang="es">¡Hasta muy pronto en la isla!</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  try{
+    if(!('IntersectionObserver' in window))return;
+    var els=Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    if(!els.length)return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.1});
+    document.documentElement.className+=' js';
+    els.forEach(function(el){io.observe(el);});
+    // absolute safety net: reveal everything shortly after load no matter what
+    setTimeout(function(){els.forEach(function(el){el.className+=' in';});},1200);
+  }catch(e){
+    document.documentElement.className=document.documentElement.className.replace(/\bjs\b/,'');
+  }
+})();
+(function(){
+  var fr=document.getElementById('langfr'),es=document.getElementById('langes');
+  if(!fr||!es)return;
+  es.addEventListener('change',function(){document.documentElement.lang='es';});
+  fr.addEventListener('change',function(){document.documentElement.lang='fr';});
+})();
+</script>
+
+
+</body></html>
